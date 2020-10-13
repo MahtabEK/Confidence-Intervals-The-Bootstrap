@@ -32,6 +32,8 @@ Why do you think this is the case?
 
 You can check out the answers to these questions in my code provided in "Confidence Intervals The Bootstrap.ipynb".
 
+
+
 **Section 2**
 
 **Part 1:**
