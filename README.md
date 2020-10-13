@@ -23,5 +23,43 @@ As you will see, there are two red intervels. It's good to think about these que
 
 You can check out the answers to these questions in my code provided in "Confidence Intervals The Bootstrap.ipynb".
 
-**Part 4:
+**Part 4:**
+Here, I wrote a function called num_propper_length which takes as its only argument an integer n. num_propper_length simulates 1000 datasets of length n, compute confidence intervals for those datasets, compute the lengths of those intervals, and then returns the number of intervals which are no longer than 0.1 units.
 
+**Part 5:**
+Here is a question. If you run the code, you will see that 891 (or approximately 89%) of the intervals are longer than 0.1.
+Why do you think this is the case?
+
+You can check out the answers to these questions in my code provided in "Confidence Intervals The Bootstrap.ipynb".
+
+**Section 2**
+
+**Part 1:**
+The dataset hockey_stats.csv contains information about hockey draftees. I use this data to investigate the relationship between height and age on weight.
+
+First, I load in the hockey_draftees_train.csv data into pandas. then, I fit a linear model of weight (wt) explained by height (ht) and age(age). I call my fitted model, model.
+
+**Part 2:**
+Then, I print out the R-squared for this model.
+
+**Part 3:**
+Now, we want to see how well this model performs out of sample. For this reason, I load in the hockey_draftees_test.csv file into a dataframe. Then, I use my model to make predictions, and print the r-squared on the out of sample (oos) data.
+
+**Part 4:**
+A point estimate of the rsquared is nice, but what I really want is uncertainty estimates. For that, I need a confidence interval. To estimate how uncertain I am in the out of sample r-squared, let's use the bootstrap.
+
+I wrote a function called bootstrap which takes three arguments:
+
+- data, which is a dataframe, and
+- model which is an statsmodel ols model. data should look the the data model was trained on so that we can use model to make predictions on data.
+- numboot which is an integer denoting how many bootstrap replications to perform.
+
+I wrote bootstrap to perform bootstrap resampling for the out of sample r-squared. I used pd.DataFrame.sample with replace = True to perform the resampling.
+
+Bootstrap returns a numpy array of bootstraped rsquared values.
+
+**Part 5:**
+Here, I use my bootstrap function to plot 10,000 bootstrap replicates as a histogram.
+
+**Part 6:**
+I use the bootstrap replicates to estimates to obtain a bootstrapped 95% confidence interval. I called the upper confidence bound ci_upper and the lower confidence bound ci_lower.
